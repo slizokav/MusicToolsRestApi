@@ -24,4 +24,8 @@ public class Tool {
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person person;
+
+    @ManyToOne
+    @JoinColumn(name = "brand_id", referencedColumnName = "id")
+    private Brand brand;
 }

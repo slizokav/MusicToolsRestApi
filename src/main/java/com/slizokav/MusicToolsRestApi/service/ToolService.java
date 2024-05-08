@@ -1,9 +1,12 @@
 package com.slizokav.MusicToolsRestApi.service;
 
+import com.slizokav.MusicToolsRestApi.model.Brand;
 import com.slizokav.MusicToolsRestApi.model.Person;
 import com.slizokav.MusicToolsRestApi.model.Tool;
+import com.slizokav.MusicToolsRestApi.repositories.BrandRepository;
 import com.slizokav.MusicToolsRestApi.repositories.PersonRepository;
 import com.slizokav.MusicToolsRestApi.repositories.ToolRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,19 +17,25 @@ public class ToolService {
 
     private final ToolRepository toolRepository;
     private final PersonRepository personRepository;
+    private final BrandRepository brandRepository;
 
-    public ToolService(ToolRepository toolRepository, PersonRepository personRepository) {
+    @Autowired
+    public ToolService(ToolRepository toolRepository, PersonRepository personRepository, BrandRepository brandRepository) {
         this.toolRepository = toolRepository;
         this.personRepository = personRepository;
+        this.brandRepository = brandRepository;
     }
 
-    // Создать инструмент и присвоить ему владельца
-    public void createTool(Tool tool) {
+    // Создать инструмент
+    public void create(String toolName, int cost) {
+        Tool tool = new Tool();
+        tool.setTool_name(toolName);
+        tool.setCost(cost);
         toolRepository.save(tool);
     }
 
     // Удаление инструмента по его id
-    public void deleteTool(int id) {
+    public void delete(int id) {
         toolRepository.deleteById(id);
     }
 
@@ -45,6 +54,23 @@ public class ToolService {
         toolsList.add(tools);
         person.setToolsList(toolsList);
     }
+
+    // Добавить бренд к существующему инструменту
+    public void addBrand(int id, String brandName) {
+        Tool tools = toolRepository.findById(id).get();
+        Brand brand = brandRepository.findByBrandName(brandName).get();
+        tools.setBrand(brand);
+
+        List<Tool> toolList;
+        if (brand.getToolList() == null) {
+            toolList = new ArrayList<>();
+        } else {
+            toolList = brand.getToolList();
+        }
+        toolList.add(tools);
+        brand.setToolList(toolList);
+    }
+
 
     // Получение всего списка инструментов
     public List<Tool> getTools() {

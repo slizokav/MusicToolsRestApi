@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "brand")
 @Data
@@ -12,8 +14,13 @@ import lombok.NoArgsConstructor;
 public class Brand {
 
     @Id
-    private String tools_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
     @Column(name = "brand_name")
-    private String brand_name;
+    private String brandName;
+
+    @OneToMany(mappedBy = "brand")
+    private List<Tool> toolList;
 }
