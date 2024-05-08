@@ -4,7 +4,6 @@ import com.slizokav.MusicToolsRestApi.model.Brand;
 import com.slizokav.MusicToolsRestApi.repositories.BrandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -17,7 +16,7 @@ public class BrandService {
         this.brandRepository = brandRepository;
     }
 
-    // Создать бренд
+    // Создание бренда
     public void create(String brandName) {
         Brand brand = new Brand();
         brand.setBrandName(brandName);

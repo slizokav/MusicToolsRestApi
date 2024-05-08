@@ -8,8 +8,6 @@ import com.slizokav.MusicToolsRestApi.repositories.PersonRepository;
 import com.slizokav.MusicToolsRestApi.repositories.ToolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,7 +24,7 @@ public class ToolService {
         this.brandRepository = brandRepository;
     }
 
-    // Создать инструмент
+    // Создание инструмента
     public void create(String toolName, int cost) {
         Tool tool = new Tool();
         tool.setTool_name(toolName);
@@ -39,36 +37,28 @@ public class ToolService {
         toolRepository.deleteById(id);
     }
 
-    // Добавить владельца к существующему инструменту
+    // Добавление владельца к существующему инструменту
     public void addPerson(int id, String username) {
         Tool tools = toolRepository.findById(id).get();
         Person person = personRepository.findByUsername(username).get();
         tools.setPerson(person);
 
-        List<Tool> toolsList;
-        if (person.getToolsList() == null) {
-            toolsList = new ArrayList<>();
-        } else {
-            toolsList = person.getToolsList();
-        }
+        List<Tool> toolsList = person.getToolsList();
         toolsList.add(tools);
         person.setToolsList(toolsList);
+        personRepository.save(person);
     }
 
-    // Добавить бренд к существующему инструменту
+    // Добавление бренда к существующему инструменту
     public void addBrand(int id, String brandName) {
         Tool tools = toolRepository.findById(id).get();
         Brand brand = brandRepository.findByBrandName(brandName).get();
         tools.setBrand(brand);
 
-        List<Tool> toolList;
-        if (brand.getToolList() == null) {
-            toolList = new ArrayList<>();
-        } else {
-            toolList = brand.getToolList();
-        }
+        List<Tool> toolList = brand.getToolList();;
         toolList.add(tools);
         brand.setToolList(toolList);
+        brandRepository.save(brand);
     }
 
 
