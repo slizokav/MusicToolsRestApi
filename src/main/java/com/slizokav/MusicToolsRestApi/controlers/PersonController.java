@@ -12,26 +12,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class CrudController {
+public class PersonController {
     private final PersonService personService;
     private final JWTUtil jwtUtil;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public CrudController(PersonService personService, JWTUtil jwtUtil, ModelMapper modelMapper) {
+    public PersonController(PersonService personService, JWTUtil jwtUtil, ModelMapper modelMapper) {
         this.personService = personService;
         this.jwtUtil = jwtUtil;
         this.modelMapper = modelMapper;
-    }
-
-    @GetMapping("/test")
-    public String mainPage() {
-        return "test";
-    }
-
-    @GetMapping("/admin")
-    public String adminPage() {
-        return "admin response";
     }
 
     @PostMapping("/registration")

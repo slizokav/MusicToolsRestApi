@@ -10,12 +10,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Brand {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
 
-    @Column(name = "music_type")
-    @NotEmpty(message = "music_type may not be empty")
-    private String music_type;
+    @Id
+    private String tools_id;
+
+    @Column(name = "brand_name")
+    private String brand_name;
 }

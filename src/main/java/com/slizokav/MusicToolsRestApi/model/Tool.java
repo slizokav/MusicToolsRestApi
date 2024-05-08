@@ -6,20 +6,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "tools")
+@Table(name = "tool")
 @Data
 @NoArgsConstructor
-public class Tools {
+public class Tool {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
     @Column(name = "tool_name")
-    @NotEmpty(message = "tool_name may not be empty")
     private String tool_name;
 
     @Column(name = "cost")
-    @NotEmpty(message = "cost may not be empty")
     private int cost;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id", referencedColumnName = "id")
+    private Person person;
 }

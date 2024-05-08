@@ -35,7 +35,6 @@ public class SpringConfiguration {
                 .cors((cors) -> cors.disable())
                 .authorizeHttpRequests((request) -> request
                         .requestMatchers("/auth", "/registration", "/test").permitAll()
-                        .requestMatchers("/admin").hasRole("ADMIN")
                         .anyRequest().hasAnyRole("USER", "ADMIN")
                 )
                 .sessionManagement((sessionManagement) -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

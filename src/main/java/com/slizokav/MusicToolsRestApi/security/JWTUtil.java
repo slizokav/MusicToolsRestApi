@@ -21,18 +21,18 @@ public class JWTUtil {
         Date expirationDate = Date.from(ZonedDateTime.now().plusMinutes(60).toInstant());
 
         return JWT.create()
-                .withSubject("User details")
+                .withSubject("Music Tools Rest Api")
                 .withClaim("username", username)
                 .withIssuedAt(new Date())
-                .withIssuer("Disli")
+                .withIssuer("Alina")
                 .withExpiresAt(expirationDate)
                 .sign(Algorithm.HMAC256(JWTSecret));
     }
 
     public String validateToken(String token) throws JWTVerificationException {
         JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(JWTSecret))
-                .withSubject("User details")
-                .withIssuer("Disli")
+                .withSubject("Music Tools Rest Api")
+                .withIssuer("Alina")
                 .build();
 
         DecodedJWT decodedJWT = jwtVerifier.verify(token);

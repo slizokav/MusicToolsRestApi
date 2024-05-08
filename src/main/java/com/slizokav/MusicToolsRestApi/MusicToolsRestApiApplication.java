@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class CrudSecurityRestApplication {
+public class MusicToolsRestApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CrudSecurityRestApplication.class, args);
+		SpringApplication.run(MusicToolsRestApiApplication.class, args);
 	}
 	@Bean
 	public ModelMapper ModelMapper() {

@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "person")
 @Data
@@ -17,16 +19,16 @@ public class Person {
     private int id;
 
     @Column(name = "username")
-    @NotEmpty(message = "username may not be empty")
     private String username;
 
     @Column(name = "password")
-    @NotEmpty(message = "password may not be empty")
     private String password;
 
     @Column(name = "role")
-    @NotEmpty(message = "role may not be empty")
     private String role;
+
+    @OneToMany(mappedBy = "person")
+    private List<Tool> toolsList;
 
     public Person(String username, String password) {
         this.username = username;
