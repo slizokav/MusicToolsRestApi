@@ -31,12 +31,12 @@ public class BrandController {
     @DeleteMapping("/brand/{id}")
     public ResponseEntity<?> delete(@PathVariable int id) {
         brandService.delete(id);
-        return new ResponseEntity<>(new BodyResponse(HttpStatus.OK.toString(), "Бренд с id: " + id + "успешно удален"), HttpStatus.OK);
+        return new ResponseEntity<>(new BodyResponse(HttpStatus.OK.toString(), "Бренд с id: " + id + " успешно удален"), HttpStatus.OK);
     }
 
     @PutMapping("/brand/{id}")
     public ResponseEntity<?> update(@PathVariable int id, @RequestBody String toolName) {
         brandService.update(id, toolName);
-        return new ResponseEntity<>(new BodyResponse(HttpStatus.OK.toString(), "Бренд с id: " + id + "успешно обновлен"), HttpStatus.OK);
+        return new ResponseEntity<>(new BodyResponse(HttpStatus.OK.toString(), "Бренд с id: " + id + " успешно обновлен"), HttpStatus.OK);
     }
 }

@@ -33,13 +33,13 @@ public class ToolController {
     @DeleteMapping("/tool/{id}")
     public ResponseEntity<?> delete(@PathVariable int id) {
         toolService.delete(id);
-        return new ResponseEntity<>(new BodyResponse(HttpStatus.OK.toString(), "Инструмент с id: " + id + "успешно удален"), HttpStatus.OK);
+        return new ResponseEntity<>(new BodyResponse(HttpStatus.OK.toString(), "Инструмент с id: " + id + " успешно удален"), HttpStatus.OK);
     }
 
     @PutMapping("/tool/{id}")
     public ResponseEntity<?> update(@PathVariable int id, @RequestBody ToolDto toolDto) {
         toolService.update(id, toolDto.getToolName(), toolDto.getCost());
-        return new ResponseEntity<>(new BodyResponse(HttpStatus.OK.toString(), "Инструмент с id: " + id + "успешно обновлен"), HttpStatus.OK);
+        return new ResponseEntity<>(new BodyResponse(HttpStatus.OK.toString(), "Инструмент с id: " + id + " успешно обновлен"), HttpStatus.OK);
     }
 
     @PostMapping("/addPerson/{id}")
