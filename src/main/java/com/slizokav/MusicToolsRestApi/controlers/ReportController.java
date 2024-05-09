@@ -26,9 +26,9 @@ public class ReportController {
 
     @GetMapping("/report")
     public ResponseEntity<?> getReport() {
-        return new ResponseEntity<>(new BodyResponse(HttpStatus.OK.toString(), "Отчет по людям: " + personService.getPersons().toString() + "\n"
-                + "Отчет по брендам: " + brandService.getBrands().toString() + "\n"
-        + "Отчет по инструментам: " + toolService.getTools().toString()), HttpStatus.OK);
+        return new ResponseEntity<>(new BodyResponse(HttpStatus.OK.toString(), "Отчет по людям: " + personService.getPersons().toString() +
+                " Отчет по брендам: " + brandService.getBrands().toString() +
+         " Отчет по инструментам: " + toolService.getTools().toString()), HttpStatus.OK);
     }
 
 }

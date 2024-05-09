@@ -3,13 +3,16 @@ package com.slizokav.MusicToolsRestApi.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
 @Table(name = "brand")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Brand {
 
@@ -23,4 +26,12 @@ public class Brand {
 
     @OneToMany(mappedBy = "brand")
     private List<Tool> toolList;
+
+    @Override
+    public String toString() {
+        return "Brand{" +
+                "brandName='" + brandName + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

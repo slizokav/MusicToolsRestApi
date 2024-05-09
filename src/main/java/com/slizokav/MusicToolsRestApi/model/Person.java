@@ -3,13 +3,16 @@ package com.slizokav.MusicToolsRestApi.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
 @Table(name = "person")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Person {
 
@@ -33,5 +36,15 @@ public class Person {
     public Person(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "role='" + role + '\'' +
+                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                ", id=" + id +
+                '}';
     }
 }
