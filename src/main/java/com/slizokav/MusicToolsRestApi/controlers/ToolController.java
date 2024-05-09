@@ -2,7 +2,6 @@ package com.slizokav.MusicToolsRestApi.controlers;
 
 import com.slizokav.MusicToolsRestApi.dto.ToolDto;
 import com.slizokav.MusicToolsRestApi.dto.response.BodyResponse;
-import com.slizokav.MusicToolsRestApi.repositories.PersonRepository;
 import com.slizokav.MusicToolsRestApi.service.ToolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
