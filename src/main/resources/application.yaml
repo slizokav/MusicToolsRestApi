@@ -6,4 +6,11 @@ spring:
     password: postgres
     url: jdbc:postgresql://localhost:5432/postgres
 
+  sql:
+    init:
+      mode: always
+  jpa:
+    hibernate:
+      ddl-auto: none
+
 jwt_secret: J37$Iv9*As6@
